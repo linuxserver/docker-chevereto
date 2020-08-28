@@ -1,0 +1,17 @@
+#!/bin/bash
+
+mkdir -p /data
+
+touch /config/settings.php
+ln -sf /config/settings.php /app/chevereto/app/settings.php
+
+[[ ! -e "/data/images" ]] &&
+    mv /app/chevereto/images /data
+
+rm -rf /app/chevereto/images
+ln -sf /data/images /app/chevereto/images
+
+chown -R abc:abc \
+    /app/chevereto \
+    /config \
+    /data
