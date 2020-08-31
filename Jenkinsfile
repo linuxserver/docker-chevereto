@@ -18,7 +18,7 @@ pipeline {
     GITLAB_NAMESPACE=credentials('gitlab-namespace-id')
     EXT_GIT_BRANCH = 'master'
     EXT_USER = 'Chevereto'
-    EXT_REPO = 'CheveretoFree'
+    EXT_REPO = 'Chevereto-Free'
     BUILD_VERSION_ARG = 'CHEVERETO_RELEASE'
     LS_USER = 'linuxserver'
     LS_REPO = 'docker-chevereto'
