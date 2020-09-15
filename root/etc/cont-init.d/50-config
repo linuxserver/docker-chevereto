@@ -2,6 +2,11 @@
 
 mkdir -p /data
 
+# copy config
+[[ ! -e /config/user.ini ]] && \
+	cp /defaults/user.ini /config/user.ini
+cp /config/user.ini /etc/php7/conf.d/99-user.ini
+
 touch /config/settings.php
 ln -sf /config/settings.php /app/chevereto/app/settings.php
 
