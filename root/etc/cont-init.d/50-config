@@ -2,10 +2,9 @@
 
 mkdir -p /data
 
-# copy config
-[[ ! -e /config/user.ini ]] && \
-	cp /defaults/user.ini /config/user.ini
-cp /config/user.ini /etc/php7/conf.d/99-user.ini
+## Bump php upload max filesize and post max size to 100MB by default
+grep -qxF 'upload_max_filesize' /config/php/php-local.ini || echo 'upload_max_filesize = 200MB' >> /config/php/php-local.ini
+grep -qxF 'post_max_size' /config/php/php-local.ini || echo 'post_max_size = 200MB' >> /config/php/php-local.ini
 
 touch /config/settings.php
 ln -sf /config/settings.php /app/chevereto/app/settings.php
