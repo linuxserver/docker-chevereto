@@ -6,6 +6,11 @@ mkdir -p /data
 grep -qF 'upload_max_filesize' /config/php/php-local.ini || echo 'upload_max_filesize = 200M' >> /config/php/php-local.ini
 grep -qF 'post_max_size' /config/php/php-local.ini || echo 'post_max_size = 200M' >> /config/php/php-local.ini
 
+## TODO: Remove this following bit by 12/19/2020
+# Remove erronously added configs post-init
+sed -i "s/^upload_max_filesize = 200MB$//g" /config/php/php-local.ini
+sed -i "s/^post_max_size = 200MB$//g" /config/php/php-local.ini
+
 touch /config/settings.php
 ln -sf /config/settings.php /app/chevereto/app/settings.php
 
