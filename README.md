@@ -78,7 +78,8 @@ services:
       - PGID=1000
       - TZ=<TZ>
     volumes:
-      - <path to data on host>:/config
+      - <path to config on host>:/config
+      - <path to data on host>:/data
     ports:
       - 80:80
       - 443:443
@@ -95,7 +96,8 @@ docker run -d \
   -e TZ=<TZ> \
   -p 80:80 \
   -p 443:443 \
-  -v <path to data on host>:/config \
+  -v <path to config on host>:/config \
+  -v <path to data on host>:/data \
   --restart unless-stopped \
   ghcr.io/linuxserver/chevereto
 ```
@@ -113,6 +115,7 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e PGID=1000` | for GroupID - see below for explanation |
 | `-e TZ=<TZ>` | Timezone (i.e., America/New_York) |
 | `-v /config` | config directory volume mapping |
+| `-v /data` | data directory volume mapping |
 
 ## Environment variables from files (Docker secrets)
 
