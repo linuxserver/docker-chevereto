@@ -81,12 +81,29 @@ services:
       - PGID=1000
       - TZ=<TZ>
     volumes:
-      - <path to config on host>:/config
-      - <path to data on host>:/data
+      - /opt/appdata/chevereto/config:/config
+      - /opt/appdata/chevereto/data:/data
     ports:
       - 80:80
       - 443:443
     restart: unless-stopped
+    depends_on:
+      - chev_db
+  chev_db:
+    image: ghcr.io/linuxserver/mariadb
+    container_name: chev_db
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - MYSQL_ROOT_PASSWORD=<chevrootpasswd>
+      - TZ=<TZ>
+      - MYSQL_DATABASE=chev
+      - MYSQL_USER=chevuser
+      - MYSQL_PASSWORD=<chevrpasswd>
+    volumes:
+      - /opt/appdata/chevereto/db/data:/config
+    restart: unless-stopped
+
 ```
 
 ### docker cli
@@ -163,6 +180,8 @@ We publish various [Docker Mods](https://github.com/linuxserver/docker-mods) to 
   * `docker inspect -f '{{ index .Config.Labels "build_version" }}' chevereto`
 * image version number
   * `docker inspect -f '{{ index .Config.Labels "build_version" }}' ghcr.io/linuxserver/chevereto`
+* [MySQL or Mariadb](https://v3-docs.chevereto.com/setup/system/requirements.html#database) is required for Chevereto. 
+
 
 ## Updating Info
 
