@@ -32,6 +32,8 @@ param_ports:
 # application setup block
 app_setup_block_enabled: true
 app_setup_block: |
+  As per [this notice](https://github.com/Chevereto/Chevereto-Free#thats-all-folks) Chevereto-Free will be EOL on 2021-12-31 and no new releases will be produced for it. Our container will continue to be updated until at least that date but we cannot make any assurances beyond it.
+
   Access the WebUI at <your-ip>:443. For more information, check out [Chevereto Free](https://github.com/Chevereto/Chevereto-Free).
 
   Chevereto requires a MariaDB database, we have an image available [here](https://github.com/linuxserver/docker-mariadb) if you require it.
