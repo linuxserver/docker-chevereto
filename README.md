@@ -82,6 +82,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
+      - TZ=Europe/London
     volumes:
       - /path/to/config:/config
       - /path/to/data:/data
@@ -91,7 +92,7 @@ services:
     restart: unless-stopped
     depends_on:
       - chevereto-db
-      
+
   chevereto-db:
     image: ghcr.io/linuxserver/mariadb
     container_name: chevereto-db
@@ -99,7 +100,7 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/London
-      - MYSQL_ROOT_PASSWORD=<yourdbpass>
+      - MYSQL_ROOT_PASSWORD=<yourrootpass>
       - MYSQL_DATABASE=chevereto
       - MYSQL_USER=chevereto
       - MYSQL_PASSWORD=<yourdbpass>
