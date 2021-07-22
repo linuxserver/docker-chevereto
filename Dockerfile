@@ -15,7 +15,6 @@ RUN \
   apk add --update --no-cache \
     curl \
     php7 \
-    php7-imagick \
     php7-ctype \
     php7-curl \ 
     php7-exif \
