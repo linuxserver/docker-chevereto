@@ -29,6 +29,42 @@ param_ports:
   - { external_port: "80", internal_port: "80", port_desc: "http gui" }
   - { external_port: "443", internal_port: "443", port_desc: "https gui" }
 
+custom_compose: |
+  ---
+  version: "2"
+  services:
+    chevereto:
+      image: ghcr.io/linuxserver/chevereto
+      container_name: chevereto
+      environment:
+        - PUID=1000
+        - PGID=1000
+        - TZ=Europe/London
+      volumes:
+        - /path/to/config:/config
+        - /path/to/data:/data
+      ports:
+        - 80:80
+        - 443:443
+      restart: unless-stopped
+      depends_on:
+        - chevereto-db
+
+    chevereto-db:
+      image: ghcr.io/linuxserver/mariadb
+      container_name: chevereto-db
+      environment:
+        - PUID=1000
+        - PGID=1000
+        - TZ=Europe/London
+        - MYSQL_ROOT_PASSWORD=<yourrootpass>
+        - MYSQL_DATABASE=chevereto
+        - MYSQL_USER=chevereto
+        - MYSQL_PASSWORD=<yourdbpass>
+      volumes:
+        - /path/to/config:/config
+      restart: unless-stopped
+
 # application setup block
 app_setup_block_enabled: true
 app_setup_block: |
