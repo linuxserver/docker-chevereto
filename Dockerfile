@@ -8,9 +8,6 @@ LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DA
 LABEL maintainer="alex-phillips"
 
 RUN \
-  echo "**** install build packages ****" && \
-  apk add --update --no-cache --virtual=build-dependencies \
-    composer && \
   echo "**** install runtime packages ****" && \
   apk add --update --no-cache \
     curl \
@@ -40,8 +37,6 @@ RUN \
   /tmp/chevereto.tar.gz -C \
     /app/chevereto/ --strip-components=1 && \
   echo "**** cleanup ****" && \
-  apk del --purge \
-    build-dependencies && \
   rm -rf \
     /root/.cache \
     /tmp/*
