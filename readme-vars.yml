@@ -29,11 +29,54 @@ param_ports:
   - { external_port: "80", internal_port: "80", port_desc: "http gui" }
   - { external_port: "443", internal_port: "443", port_desc: "https gui" }
 
+custom_compose: |
+  ---
+  version: "2"
+  services:
+    chevereto:
+      image: ghcr.io/linuxserver/chevereto
+      container_name: chevereto
+      environment:
+        - PUID=1000
+        - PGID=1000
+        - TZ=Europe/London
+      volumes:
+        - /path/to/config:/config
+        - /path/to/data:/data
+      ports:
+        - 80:80
+        - 443:443
+      restart: unless-stopped
+      depends_on:
+        - chevereto-db
+
+    chevereto-db:
+      image: ghcr.io/linuxserver/mariadb
+      container_name: chevereto-db
+      environment:
+        - PUID=1000
+        - PGID=1000
+        - TZ=Europe/London
+        - MYSQL_ROOT_PASSWORD=<yourrootpass>
+        - MYSQL_DATABASE=chevereto
+        - MYSQL_USER=chevereto
+        - MYSQL_PASSWORD=<yourdbpass>
+      volumes:
+        - /path/to/config:/config
+      restart: unless-stopped
+
 # application setup block
 app_setup_block_enabled: true
 app_setup_block: |
+  As per [this notice](https://github.com/Chevereto/Chevereto-Free#thats-all-folks) Chevereto-Free will be EOL on 2021-12-31 and no new releases will be produced for it. Our container will continue to be updated until at least that date but we cannot make any assurances beyond it.
+
   Access the WebUI at <your-ip>:443. For more information, check out [Chevereto Free](https://github.com/Chevereto/Chevereto-Free).
+
+  Chevereto requires a MariaDB database, we have an image available [here](https://github.com/linuxserver/docker-mariadb) if you require it.
+
+  If you are putting Chevereto behind a reverse proxy and need the Real IP to be passed through, edit /config/nginx/site-confs/default, and set `set_real_ip_from` to match the IP address/address block of your proxy server(s).
 
 # changelog
 changelogs:
+  - { date: "22.07.21:", desc: "Rebase to Alpine 3.14." }
   - { date: "28.08.20:", desc: "Initial Release." }
