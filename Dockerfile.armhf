@@ -31,10 +31,10 @@ RUN \
     | awk '/tag_name/{print $4;exit}' FS='[""]'); \
   fi && \
   curl -o \
-  /tmp/chevereto.tar.gz -L \
+    /tmp/chevereto.tar.gz -L \
     "https://github.com/Chevereto/Chevereto-Free/archive/${CHEVERETO_RELEASE}.tar.gz" && \
   tar xf \
-  /tmp/chevereto.tar.gz -C \
+    /tmp/chevereto.tar.gz -C \
     /app/chevereto/ --strip-components=1 && \
   echo "**** cleanup ****" && \
   rm -rf \
