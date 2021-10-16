@@ -25,7 +25,7 @@ RUN \
     php7-xml \
     php7-fileinfo && \
   echo "**** install chevereto-free ****" && \
-  mkdir -p /app/chevereto && \
+  mkdir -p /app/www/public && \
   if [ -z ${CHEVERETO_RELEASE+x} ]; then \
     CHEVERETO_RELEASE=$(curl -sX GET "https://api.github.com/repos/Chevereto/Chevereto-Free/releases/latest" \
     | awk '/tag_name/{print $4;exit}' FS='[""]'); \
@@ -35,7 +35,7 @@ RUN \
     "https://github.com/Chevereto/Chevereto-Free/archive/${CHEVERETO_RELEASE}.tar.gz" && \
   tar xf \
     /tmp/chevereto.tar.gz -C \
-    /app/chevereto/ --strip-components=1 && \
+    /app/www/public/ --strip-components=1 && \
   echo "**** cleanup ****" && \
   rm -rf \
     /root/.cache \
