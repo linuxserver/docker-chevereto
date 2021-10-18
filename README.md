@@ -78,7 +78,7 @@ Here are some example snippets to help you get started creating a container.
 version: "2"
 services:
   chevereto:
-    image: ghcr.io/linuxserver/chevereto
+    image: lscr.io/linuxserver/chevereto
     container_name: chevereto
     environment:
       - PUID=1000
@@ -95,7 +95,7 @@ services:
       - chevereto-db
 
   chevereto-db:
-    image: ghcr.io/linuxserver/mariadb
+    image: lscr.io/linuxserver/mariadb
     container_name: chevereto-db
     environment:
       - PUID=1000
