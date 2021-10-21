@@ -2,7 +2,7 @@
 
 # project information
 project_name: chevereto
-project_url: "https://github.com/Chevereto/Chevereto-Free"
+project_url: "https://github.com/rodber/chevereto-free"
 project_logo: ""
 project_blurb: |
   [{{ project_name|capitalize }}]({{ project_url }}) is an image hosting software that allows you to create a beautiful and full-featured image hosting website on your own server. It's your hosting and your rules, so say goodbye to closures and restrictions.
@@ -65,12 +65,16 @@ custom_compose: |
         - /path/to/config:/config
       restart: unless-stopped
 
+unraid_requirement: A MYSQL compatible database, like MariaDB
+
 # application setup block
 app_setup_block_enabled: true
 app_setup_block: |
-  As per [this notice](https://github.com/Chevereto/Chevereto-Free#thats-all-folks) Chevereto-Free will be EOL on 2021-12-31 and no new releases will be produced for it. Our container will continue to be updated until at least that date but we cannot make any assurances beyond it.
+  Chevereto-Free now has a maintainer!
 
-  Access the WebUI at <your-ip>:443. For more information, check out [Chevereto Free](https://github.com/Chevereto/Chevereto-Free).
+  ~~Chevereto-Free will be EOL on 2021-12-31 and no new releases will be produced for it. Our container will continue to be updated until at least that date but we cannot make any assurances beyond it.~~
+
+  Access the WebUI at <your-ip>:443. For more information, check out [Chevereto Free](https://github.com/rodber/chevereto-free).
 
   Chevereto requires a MariaDB database, we have an image available [here](https://github.com/linuxserver/docker-mariadb) if you require it.
 
@@ -78,5 +82,6 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "21.10.21:", desc: "Removed deprecation warning, change reposiory links." }
   - { date: "22.07.21:", desc: "Rebase to Alpine 3.14." }
   - { date: "28.08.20:", desc: "Initial Release." }
