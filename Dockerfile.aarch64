@@ -13,8 +13,8 @@ RUN \
     curl \
     php7 \
     php7-ctype \
-    php7-curl \ 
-    php7-exif \    
+    php7-curl \
+    php7-exif \
     php7-gd \
     php7-json \
     php7-mbstring \
@@ -27,12 +27,12 @@ RUN \
   echo "**** install chevereto-free ****" && \
   mkdir -p /app/chevereto && \
   if [ -z ${CHEVERETO_RELEASE+x} ]; then \
-    CHEVERETO_RELEASE=$(curl -sX GET "https://api.github.com/repos/Chevereto/Chevereto-Free/releases/latest" \
+    CHEVERETO_RELEASE=$(curl -sX GET "https://api.github.com/repos/rodber/chevereto-free/releases/latest" \
     | awk '/tag_name/{print $4;exit}' FS='[""]'); \
   fi && \
   curl -o \
   /tmp/chevereto.tar.gz -L \
-    "https://github.com/Chevereto/Chevereto-Free/archive/${CHEVERETO_RELEASE}.tar.gz" && \
+    "https://github.com/rodber/chevereto-free/archive/${CHEVERETO_RELEASE}.tar.gz" && \
   tar xf \
   /tmp/chevereto.tar.gz -C \
     /app/chevereto/ --strip-components=1 && \

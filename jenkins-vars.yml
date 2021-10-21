@@ -1,5 +1,4 @@
 ---
-
 # jenkins variables
 project_name: docker-chevereto
 external_type: github_stable
@@ -8,8 +7,8 @@ release_tag: latest
 ls_branch: master
 repo_vars:
   - EXT_GIT_BRANCH = 'master'
-  - EXT_USER = 'Chevereto'
-  - EXT_REPO = 'Chevereto-Free'
+  - EXT_USER = 'rodber'
+  - EXT_REPO = 'chevereto-free'
   - BUILD_VERSION_ARG = 'CHEVERETO_RELEASE'
   - LS_USER = 'linuxserver'
   - LS_REPO = 'docker-chevereto'
