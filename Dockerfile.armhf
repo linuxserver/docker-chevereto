@@ -9,8 +9,9 @@ LABEL maintainer="alex-phillips"
 
 RUN \
   echo "**** install runtime packages ****" && \
-  apk add --no-cache \
+  apk add --update --no-cache \
     curl \
+    composer \
     php7 \
     php7-ctype \
     php7-curl \
@@ -36,6 +37,8 @@ RUN \
   tar xf \
   /tmp/chevereto.tar.gz -C \
     /app/chevereto/ --strip-components=1 && \
+  cd /app/chevereto && \
+  composer install && \    
   echo "**** cleanup ****" && \
   rm -rf \
     /root/.cache \
