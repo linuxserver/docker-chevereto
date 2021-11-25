@@ -9,11 +9,12 @@ LABEL maintainer="alex-phillips"
 
 RUN \
   echo "**** install runtime packages ****" && \
-  apk add --no-cache \
+  apk add --update --no-cache \
     curl \
+    composer \
     php7 \
     php7-ctype \
-    php7-curl \ 
+    php7-curl \
     php7-exif \
     php7-gd \
     php7-json \
@@ -27,15 +28,17 @@ RUN \
   echo "**** install chevereto-free ****" && \
   mkdir -p /app/www/public && \
   if [ -z ${CHEVERETO_RELEASE+x} ]; then \
-    CHEVERETO_RELEASE=$(curl -sX GET "https://api.github.com/repos/Chevereto/Chevereto-Free/releases/latest" \
+    CHEVERETO_RELEASE=$(curl -sX GET "https://api.github.com/repos/rodber/chevereto-free/releases/latest" \
     | awk '/tag_name/{print $4;exit}' FS='[""]'); \
   fi && \
   curl -o \
-    /tmp/chevereto.tar.gz -L \
-    "https://github.com/Chevereto/Chevereto-Free/archive/${CHEVERETO_RELEASE}.tar.gz" && \
+  /tmp/chevereto.tar.gz -L \
+    "https://github.com/rodber/chevereto-free/archive/${CHEVERETO_RELEASE}.tar.gz" && \
   tar xf \
     /tmp/chevereto.tar.gz -C \
     /app/www/public/ --strip-components=1 && \
+  cd /app/www/public && \
+  composer install && \
   echo "**** cleanup ****" && \
   rm -rf \
     /root/.cache \
