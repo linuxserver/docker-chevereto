@@ -82,7 +82,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
-  - { date: "25.11.21:", desc: "Use standard nginx.conf from lsio alpine nginx base image." }
+  - { date: "27.11.21:", desc: "Rebasing to alpine 3.15 with php8. Restructure nginx configs ([see changes in base](https://github.com/linuxserver/docker-baseimage-alpine-nginx/pull/84))." }
   - { date: "13.11.21:", desc: "Add composer to fix missing dependencies." }
   - { date: "21.10.21:", desc: "Removed deprecation warning, change reposiory links." }
   - { date: "22.07.21:", desc: "Rebase to Alpine 3.14." }

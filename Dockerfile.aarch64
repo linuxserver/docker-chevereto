@@ -1,4 +1,4 @@
-FROM ghcr.io/linuxserver/baseimage-alpine-nginx:arm64v8-3.14
+FROM ghcr.io/linuxserver/baseimage-alpine-nginx:arm64v8-3.15
 
 # set version label
 ARG BUILD_DATE
@@ -12,19 +12,19 @@ RUN \
   apk add --update --no-cache \
     curl \
     composer \
-    php7 \
-    php7-ctype \
-    php7-curl \
-    php7-exif \
-    php7-gd \
-    php7-json \
-    php7-mbstring \
-    php7-pdo \
-    php7-pdo_mysql \
-    php7-zip \
-    php7-session \
-    php7-xml \
-    php7-fileinfo && \
+    php8 \
+    php8-ctype \
+    php8-curl \
+    php8-exif \
+    php8-gd \
+    php8-json \
+    php8-mbstring \
+    php8-pdo \
+    php8-pdo_mysql \
+    php8-zip \
+    php8-session \
+    php8-xml \
+    php8-fileinfo && \
   echo "**** install chevereto-free ****" && \
   mkdir -p /app/www/public && \
   if [ -z ${CHEVERETO_RELEASE+x} ]; then \
