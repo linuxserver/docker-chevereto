@@ -67,7 +67,7 @@ Access the WebUI at <your-ip>:443. For more information, check out [Chevereto Fr
 
 Chevereto requires a MariaDB database, we have an image available [here](https://github.com/linuxserver/docker-mariadb) if you require it.
 
-If you are putting Chevereto behind a reverse proxy and need the Real IP to be passed through, edit /config/nginx/site-confs/default, and set `set_real_ip_from` to match the IP address/address block of your proxy server(s).
+If you are putting Chevereto behind a reverse proxy and need the Real IP to be passed through, edit /config/nginx/site-confs/default.conf, and set `set_real_ip_from` to match the IP address/address block of your proxy server(s).
 
 ## Usage
 
@@ -252,6 +252,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **27.11.21:** - Rebasing to alpine 3.15 with php8. Restructure nginx configs ([see changes in base](https://github.com/linuxserver/docker-baseimage-alpine-nginx/pull/84)).
 * **13.11.21:** - Add composer to fix missing dependencies.
 * **21.10.21:** - Removed deprecation warning, change reposiory links.
 * **22.07.21:** - Rebase to Alpine 3.14.
