@@ -26,7 +26,7 @@ RUN \
     php8-fileinfo && \
   echo "**** install composer ****" && \
   php8 -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
-  php8 composer-setup.php --install-dir=/usr/local/bin/composer --filename=composer && \
+  php8 composer-setup.php --install-dir=/usr/local/bin --filename=composer && \
   echo "**** install chevereto-free ****" && \
   mkdir -p /app/www/public && \
   if [ -z ${CHEVERETO_RELEASE+x} ]; then \
