@@ -15,15 +15,16 @@ RUN \
     php8-ctype \
     php8-curl \
     php8-exif \
+    php8-fileinfo \
     php8-gd \
     php8-json \
     php8-mbstring \
     php8-pdo \
     php8-pdo_mysql \
-    php8-zip \
+    php8-phar \
     php8-session \
     php8-xml \
-    php8-fileinfo && \
+    php8-zip && \
   echo "**** install composer ****" && \
   php8 -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
   php8 composer-setup.php --install-dir=/usr/local/bin --filename=composer && \
