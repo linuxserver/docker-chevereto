@@ -11,7 +11,6 @@ RUN \
   echo "**** install runtime packages ****" && \
   apk add --update --no-cache \
     curl \
-    composer \
     php8 \
     php8-ctype \
     php8-curl \
@@ -25,6 +24,9 @@ RUN \
     php8-session \
     php8-xml \
     php8-fileinfo && \
+  echo "**** install composer ****" && \
+  php8 -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
+  php8 composer-setup.php --install-dir=/usr/local/bin/composer --filename=composer && \
   echo "**** install chevereto-free ****" && \
   mkdir -p /app/www/public && \
   if [ -z ${CHEVERETO_RELEASE+x} ]; then \
