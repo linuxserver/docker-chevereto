@@ -8,8 +8,11 @@ LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DA
 LABEL maintainer="alex-phillips"
 
 RUN \
+  echo "**** install build packages ****" && \
+  apk add --no-cache --virtual=build-dependencies \
+    composer && \
   echo "**** install runtime packages ****" && \
-  apk add --update --no-cache \
+  apk add --no-cache \
     curl \
     php8 \
     php8-ctype \
@@ -25,9 +28,6 @@ RUN \
     php8-session \
     php8-xml \
     php8-zip && \
-  echo "**** install composer ****" && \
-  php8 -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
-  php8 composer-setup.php --install-dir=/usr/local/bin --filename=composer && \
   echo "**** install chevereto-free ****" && \
   mkdir -p /app/www/public && \
   if [ -z ${CHEVERETO_RELEASE+x} ]; then \
@@ -43,8 +43,11 @@ RUN \
   cd /app/www/public && \
   composer install && \
   echo "**** cleanup ****" && \
+  apk del --purge \
+    build-dependencies && \
   rm -rf \
     /root/.cache \
+    /root/.composer \
     /tmp/*
 
 # copy local files
