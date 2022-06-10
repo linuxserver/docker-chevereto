@@ -3,6 +3,14 @@ name: Bug report
 about: Create a report to help us improve
 
 ---
+# DEPRECATION NOTICE
+
+This image is deprecated. We will not offer support for this image and it will not be updated.
+We recommend alternative images such as:
+https://github.com/linuxserver/docker-pixapop/
+https://github.com/linuxserver/docker-piwigo/
+https://github.com/linuxserver/docker-photoshow/
+
 [linuxserverurl]: https://linuxserver.io
 [![linuxserver.io](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/linuxserver_medium.png)][linuxserverurl]
 

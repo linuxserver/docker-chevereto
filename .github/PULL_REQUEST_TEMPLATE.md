@@ -1,3 +1,11 @@
+# DEPRECATION NOTICE
+
+This image is deprecated. We will not offer support for this image and it will not be updated.
+We recommend alternative images such as:
+https://github.com/linuxserver/docker-pixapop/
+https://github.com/linuxserver/docker-piwigo/
+https://github.com/linuxserver/docker-photoshow/
+
 <!--- Provide a general summary of your changes in the Title above -->
 
 [linuxserverurl]: https://linuxserver.io

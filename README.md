@@ -27,6 +27,14 @@ Find us at:
 * [GitHub](https://github.com/linuxserver) - view the source for all of our repositories.
 * [Open Collective](https://opencollective.com/linuxserver) - please consider helping us by either donating or contributing to our budget
 
+# DEPRECATION NOTICE
+
+This image is deprecated. We will not offer support for this image and it will not be updated.
+We recommend alternative images such as:
+https://github.com/linuxserver/docker-pixapop/
+https://github.com/linuxserver/docker-piwigo/
+https://github.com/linuxserver/docker-photoshow/
+
 # [linuxserver/chevereto](https://github.com/linuxserver/docker-chevereto)
 
 [![Scarf.io pulls](https://scarf.sh/installs-badge/linuxserver-ci/linuxserver%2Fchevereto?color=94398d&label-color=555555&logo-color=ffffff&style=for-the-badge&package-type=docker)](https://scarf.sh/gateway/linuxserver-ci/docker/linuxserver%2Fchevereto)
@@ -253,6 +261,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **13.06.22:** - Deprecate.
 * **13.11.21:** - Add composer to fix missing dependencies.
 * **21.10.21:** - Removed deprecation warning, change reposiory links.
 * **22.07.21:** - Rebase to Alpine 3.14.
